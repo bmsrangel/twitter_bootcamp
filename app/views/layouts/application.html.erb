@@ -11,7 +11,15 @@
   <body>
     <header>
       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+      <p class="alert"><%= alert %></p>
+      <% if current_page?(root_path) %>
+      <% else %>
+        <%= link_to 'Home', root_path %>
+      <% end %>
+      <% if current_page?(users_path) %>
+      <% else %>
+        <%= link_to 'Usuários', users_path %>
+      <% end %>
     </header>
     <section>
       <%= yield %>

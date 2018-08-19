@@ -22,11 +22,13 @@ class User < ApplicationRecord
 
   #Verifica se um usuário está seguindo outro
   def following?(other_user)
-    followers.include?(other_user)
+    following.include?(other_user)
   end
 
   def feed
-
+    user_ids = following.pluck(:id)
+    user_ids << self.id
+    Tweet.where(user_id: user_ids).order(created_at: :desc)
   end
 
 end
