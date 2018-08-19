@@ -3,7 +3,8 @@ Bootcamp de Ruby on Rails
 </h1>
 
 <body>
-    Teste de página inicial de aplicação desenvolvida em Ruby on Rails</br>
+    Teste de página inicial de aplicação desenvolvida em Ruby on Rails<br>
+    <!-- <%= link_to 'Usuários', users_path %><br> -->
 </body>
 
 <% if user_signed_in? %>
@@ -17,7 +18,7 @@ Bootcamp de Ruby on Rails
   <% end %>
 
   <ul>
-    <% current_user.tweets.each do |tweet| %>
+    <% current_user.feed.each do |tweet| %>
       <li><%= tweet.content %></li>
     <% end %>
   </ul>
