@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 
   resources :tweets, only: :create
   resources :users, only: [:index, :show]
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 end
