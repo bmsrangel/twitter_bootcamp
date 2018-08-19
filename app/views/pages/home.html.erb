@@ -1,1 +1,28 @@
-<h1>Estamos na home!</h1>
+<h1> Estamos na home!</br>
+Bootcamp de Ruby on Rails
+</h1>
+
+<body>
+    Teste de página inicial de aplicação desenvolvida em Ruby on Rails</br>
+</body>
+
+<% if user_signed_in? %>
+  Olá, <%= current_user.email %>
+  <hr>
+  <h2>Lista de Tweets</h2>
+
+  <%= form_for @tweet do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+  <% end %>
+
+  <ul>
+    <% current_user.tweets.each do |tweet| %>
+      <li><%= tweet.content %></li>
+    <% end %>
+  </ul>
+  <br>
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to 'Clique aqui para logar', new_user_session_path %>
+<% end %>
