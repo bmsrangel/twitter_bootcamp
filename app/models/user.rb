@@ -10,8 +10,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   #Cria o relacionamento entre um usuário e outro
-  def follow!(other_user)
+  def follow!(other_user) #O ! é uma boa prática. Geralmente usado em métodos que instanciam e salvam no banco de dados
     following << other_user
+    #active_relationships.create(followed: other_user)
   end
 
   #Apaga o relacionamento entre um usuário e outro
@@ -21,7 +22,7 @@ class User < ApplicationRecord
 
   #Verifica se um usuário está seguindo outro
   def following?(other_user)
-    following.include?(other_user)
+    followers.include?(other_user)
   end
 
   def feed
